@@ -4,6 +4,7 @@ function useForm(fromDataParmas, toDataParmas) {
   /**
    * 这里可能没有那么简单
    * 只是一个简单托管的数组存一下
+   * 当然可以考虑用一个 map key 的方式来存储，以使得响应式更加准确以提高运行效率
    */
   const register_fields = [];
 
