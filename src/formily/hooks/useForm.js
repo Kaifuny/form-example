@@ -1,6 +1,10 @@
 import React from "react";
 
 function useForm(fromDataParmas, toDataParmas) {
+  /**
+   * 这里可能没有那么简单
+   * 只是一个简单托管的数组存一下
+   */
   const register_fields = [];
 
   /* 
