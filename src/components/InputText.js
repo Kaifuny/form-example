@@ -14,7 +14,6 @@ export function InputText({ value, onChange }) {
   }, [onChange, value]);
 
   const handleOnChange = (e) => {
-    if (e.target.value === value) return;
     setState(e.target.value);
     onChange && onChange(e.target.value);
   }

@@ -17,6 +17,7 @@ export const InputTextWidget = React.forwardRef((props, ref) => {
   }), [value]);
 
   const handleOnChange = (value) => {
+    console.log("InputTextWidget: ", value);
     props.onChange && props.onChange(value);
   }
 
