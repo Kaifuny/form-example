@@ -10,10 +10,11 @@ export function InputText({ value, onChange }) {
 
   React.useEffect(() => {
     setState(value);
-    onChange && onChange(value);
+    // onChange && onChange(value);
   }, [onChange, value]);
 
   const handleOnChange = (e) => {
+    if (e.target.value === value) return;
     setState(e.target.value);
     onChange && onChange(e.target.value);
   }
