@@ -18,7 +18,6 @@ function useForm(fromDataParmas, toDataParmas) {
   * InputText --> InputTextWidget 中完成注册 --> FormField 进行解包 --> 最后托管到 当前响应中
   */
   React.useEffect(() => {
-    console.log("aaaaaa");
     register_fields.forEach(({ref, fromName, toName}) => {
       if (ref.current === null) return;
       /**
