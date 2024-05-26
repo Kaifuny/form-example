@@ -8,6 +8,12 @@ function useForm(fromDataParmas, toDataParmas) {
    */
   const register_fields = [];
 
+  const fieldOnChange = React.useCallback((toName, value) => {
+    toDataParmas[toName] = value;
+    console.log("fromData: ", fromDataParmas);
+    console.log("toData: ", toDataParmas);
+  }, [fromDataParmas, toDataParmas])
+
   /* 
   * InputText --> InputTextWidget 中完成注册 --> FormField 进行解包 --> 最后托管到 当前响应中
   */
@@ -31,16 +37,23 @@ function useForm(fromDataParmas, toDataParmas) {
       widget_ref.current.onChange(fromDataParmas[fromName]);
 
       // 这里可以根据 register 传递进来的 formatter 来进行数据格式化
-      toDataParmas[toName] = fromDataParmas[fromName];
+      fieldOnChange(fromName, toName);
     });
-  }, [fromDataParmas, register_fields, toDataParmas]);
+  }, [fieldOnChange, fromDataParmas, register_fields, toDataParmas]);
 
   const form = {
     register: (fromName, toName) => {
+      if (toName === undefined) toName = fromName;
+
       const ref = React.createRef();
       register_fields.push({ref, fromName, toName});
-      // console.log(ref);
-      return { ref }
+
+      const onChange = (value) => {
+        console.log(value);
+        fieldOnChange(toName, value)
+      }
+
+      return { ref, onChange }
     }
   };
 

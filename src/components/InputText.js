@@ -6,11 +6,12 @@ import React from 'react';
  * @returns 
  */
 export function InputText({ value, onChange }) {
-  const [state, setState] = React.useState(value);
+  const [state, setState] = React.useState(value || "");
 
   React.useEffect(() => {
     setState(value);
-  }, [value]);
+    onChange && onChange(value);
+  }, [onChange, value]);
 
   const handleOnChange = (e) => {
     setState(e.target.value);
