@@ -21,6 +21,9 @@ const toData = {
 
 function App() {
 
+  // 这里的 fromData 和 toData 应该从 Form 的上下文中获取
+  // 可以进一步封装 Form 组件，在 Form 组件中可以进一步维管生命周期，以及数据的存储
+  // 因为 toData 是提交数据，fromData 是后端数据，已经完全具备
   const { register } = useForm(fromData, toData);
 
   return (
